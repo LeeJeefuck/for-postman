@@ -1,0 +1,101 @@
+{
+	"info": {
+		"_postman_id": "cece0f35-0682-4433-8b30-335725c4a395",
+		"name": "practice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "工单详情查询",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "33f8f971-9d45-4462-a95b-7d66dd9a6d97",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"测试工单2 请勿使用 谢谢配合\");\r",
+							"});\r",
+							"pm.test(\"message:成功\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql(\"成功\");\r",
+							"}); "
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "32K8xpDc5m",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "people",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://10.10.58.44:8949/queryWork/queryWorkList?queryVal=GD_0g0hit9w1594709960847&workStatus=&workType=&sortType=&page=1&perNum=20",
+					"protocol": "http",
+					"host": [
+						"10",
+						"10",
+						"58",
+						"44"
+					],
+					"port": "8949",
+					"path": [
+						"queryWork",
+						"queryWorkList"
+					],
+					"query": [
+						{
+							"key": "queryVal",
+							"value": "GD_0g0hit9w1594709960847"
+						},
+						{
+							"key": "workStatus",
+							"value": ""
+						},
+						{
+							"key": "workType",
+							"value": ""
+						},
+						{
+							"key": "sortType",
+							"value": ""
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "perNum",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
